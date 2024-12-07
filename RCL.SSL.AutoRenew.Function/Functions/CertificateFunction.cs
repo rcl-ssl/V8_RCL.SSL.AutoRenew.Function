@@ -91,9 +91,7 @@ namespace RCL.SSL.AutoRenew.Function
                 {
                     try
                     {
-                        await SheduleCertificateRenewalAsync(certificateName);
-
-                        _logger.LogInformation($"INFO: Scheduled certificate : {certificateName} for renewal");
+                        await SheduleCertificateRenewalAsync(certificateName,true);
                     }
                     catch (Exception ex)
                     {
@@ -103,7 +101,7 @@ namespace RCL.SSL.AutoRenew.Function
             }
         }
 
-        private async Task SheduleCertificateRenewalAsync(string certificateName)
+        private async Task SheduleCertificateRenewalAsync(string certificateName, bool checkExpiry = false)
         {
             try
             {
@@ -111,15 +109,26 @@ namespace RCL.SSL.AutoRenew.Function
 
                 if (string.IsNullOrEmpty(certificate?.certificateName))
                 {
-                    throw new Exception($"Certificate : {certificateName} was not found");
+                    throw new Exception($"ERROR: Certificate : {certificateName} was not found");
                 }
 
                 if (certificate.target == RCLSSLAPIConstants.targetStandAlone)
                 {
-                    throw new Exception("Stand Alone Certificates cannot be automatically renewed with the AutoRenew Function");
+                    throw new Exception("ERROR: Stand Alone Certificates cannot be automatically renewed with the AutoRenew Function");
                 }
 
-                string tokenError = "Could not get access token, please ensure that you properly configured the Microsoft Entra App Credentials";
+                if(checkExpiry == true)
+                {
+                    DateTime.TryParse(certificate.expiryDate, out var expiryDate);
+
+                    if(expiryDate.AddDays(-30) > DateTime.Now)
+                    {
+                        _logger.LogInformation($"INFO: Certificate : {certificate.certificateName} is uptodate");
+                        return;
+                    }
+                }
+
+                string tokenError = "ERROR: Could not get access token, please ensure that you properly configured the Microsoft Entra App Credentials";
 
                 var token = await _azureAccessTokenService.GetTokenAsync(RCLSSLAPIConstants.azureResource);
 
@@ -143,6 +152,8 @@ namespace RCL.SSL.AutoRenew.Function
                 }
 
                 await _certificateService.CertificateScheduleRenewAsync(certificate);
+
+                _logger.LogInformation($"INFO: Scheduled certificate : {certificateName} for renewal");
 
             }
             catch (Exception ex)
