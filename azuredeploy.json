@@ -90,7 +90,7 @@
             },
             {
               "name": "RCLSSLAPI:ApiBaseUrl",
-              "value": "undefined"
+              "value": "https://rclapi.azure-api.net/prod/v3"
             },
             {
               "name": "RCLSSLAPI:ApiKey",
@@ -99,10 +99,6 @@
             {
               "name": "RCLSSLAPI:Subscription",
               "value": "undefined"
-            },
-            {
-              "name": "RCLSSLAPI:ApiBaseUrl",
-              "value": "https://rclapi.azure-api.net/prod/v3"
             },
             {
               "name": "RCLSSLAPI:Source",
