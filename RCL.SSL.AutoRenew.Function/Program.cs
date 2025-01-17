@@ -18,8 +18,8 @@ var host = new HostBuilder()
     })
     .ConfigureServices(services =>
     {
-        services.AddRCLAPIService(options => configuration.Bind("RCLSSLAPI", options));
-        services.AddRCLAzureAccessTokenService(options => configuration.Bind("MicrosoftEntraApp", options));
+        services.AddRCLSSLAPIService(options => configuration.Bind("RCLSSLAPI", options));
+        services.AddRCLSSLAzureAccessTokenService(options => configuration.Bind("MicrosoftEntraApp", options));
         services.Configure<CertificateOptions>(options => configuration.Bind("Certificate", options));
     })
     .Build();
