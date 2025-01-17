@@ -148,7 +148,7 @@ namespace RCL.SSL.AutoRenew.Function
                         throw new Exception(tokenError);
                     }
 
-                    certificate.keyVaultName = keyVaultToken.access_token;
+                    certificate.accessTokenKeyVault = keyVaultToken.access_token;
                 }
 
                 await _certificateService.CertificateScheduleRenewAsync(certificate);
