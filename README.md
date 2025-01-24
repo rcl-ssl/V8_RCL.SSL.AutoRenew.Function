@@ -1,6 +1,6 @@
 # RCL SSL AutoRenew Function V8.0
 
-The [RCL SSL AutoRenew Function](https://docs.rclapp.com/autorenew/autorenew.html) is a Microsoft Azure Function app that automatically renews SSL/TLS certificates created in the [RCL SSL Portal](https://docs.rclapp.com/portal/portal.html).
+The [RCL SSL AutoRenew Function](https://docs.rclapp.com/autorenew/autorenew.html) is a Microsoft Azure Function app that automatically renews SSL/TLS certificates created in the [RCL SSL Portal](https://docs.rclapp.com/portal/portal.html). Click the button below to install the function in your Azure subscription.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Frcl-ssl%2FV8_RCL.SSL.AutoRenew.Function%2Fmaster%2Fazuredeploy.json)
 
