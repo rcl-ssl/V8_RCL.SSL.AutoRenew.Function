@@ -6,9 +6,9 @@ The [RCL SSL AutoRenew Function](https://docs.rclapp.com/autorenew/autorenew.htm
 
 You can use the function app to automatically renew SSL/TLS certificates created in the RCL SSL Portal using the the following creation options :
 
-- [Azure DNS](https://docs.rclapp.com/portal/azure-dns.html) (including [SAN](https://docs.rclapp.com/portal/azure-dns-san.html))
 - [Azure Key Vault + DNS](https://docs.rclapp.com/portal/azure-keyvault.html) (including [SAN](https://docs.rclapp.com/portal/azure-keyvault-san.html))
 - [Azure App Service](https://docs.rclapp.com/portal/azure-appservice.html) (including [SAN](https://docs.rclapp.com/portal/azure-appservice-san.html))
+- [Azure DNS](https://docs.rclapp.com/portal/azure-dns.html) (including [SAN](https://docs.rclapp.com/portal/azure-dns-san.html))
 
 ## Read the documentation
 
